@@ -32,6 +32,7 @@ public class Login extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         tvRegister = findViewById(R.id.tvRegister);
 
+
         btnLogin.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +41,7 @@ public class Login extends AppCompatActivity {
                 User user = userRepository.authentification(etEmail.getText().toString(), etPasswd.getText().toString());
                 if(user == null){
                     //error
-                    Toast.makeText(Login.this, "username or password incorrect", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "username or password incorrect", Toast.LENGTH_SHORT).show();
 
                 }
                 else {
