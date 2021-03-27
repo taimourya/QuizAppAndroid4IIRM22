@@ -11,10 +11,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.quizv1.Dao.IRepository;
 import com.example.quizv1.Dao.QuestionRepository;
 import com.example.quizv1.Entity.Question;
-import com.example.quizv1.Entity.ScoreE;
 import com.example.quizv1.R;
 
 public class Quiz extends AppCompatActivity {
@@ -51,8 +49,9 @@ public class Quiz extends AppCompatActivity {
             public void onClick(View v) {
 
                 //verifier si correct
-                if(rgReps.getId() == questionCourante.getRepIndex())
+                if(rgReps.getCheckedRadioButtonId() == questionCourante.getRepIndex())
                     nbRepCorrect++;
+
 
 
                 //next question
@@ -60,8 +59,11 @@ public class Quiz extends AppCompatActivity {
                 try {
                     createCurrentQuestion();
                 } catch (Exception e) {
-                    ScoreE.score = nbRepCorrect * 100 / questionRepository.size();
-                    startActivity(new Intent(Quiz.this, Score.class));
+                    Integer score = nbRepCorrect * 100 / questionRepository.size();
+
+                    Intent intent = new Intent(Quiz.this, Score.class);
+                    intent.putExtra("score", score);
+                    startActivity(intent);
                 }
             }
         });

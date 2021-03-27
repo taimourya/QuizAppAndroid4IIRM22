@@ -10,15 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizV1">
         <activity android:name=".Controller.Score"></activity>
-        <activity android:name=".Controller.Quiz" />
-        <activity android:name=".Controller.Register" />
-        <activity android:name=".Controller.Login">
+        <activity android:name=".Controller.Quiz" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Controller.Register" />
+        <activity android:name=".Controller.Login"></activity>
     </application>
 
 </manifest>
