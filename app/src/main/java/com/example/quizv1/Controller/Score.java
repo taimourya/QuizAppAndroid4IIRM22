@@ -1,14 +1,16 @@
-package com.example.quizv1;
+package com.example.quizv1.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Register extends AppCompatActivity {
+import com.example.quizv1.R;
+
+public class Score extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_score);
     }
 }

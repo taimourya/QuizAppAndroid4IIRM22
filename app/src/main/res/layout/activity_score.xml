@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Score"
+    tools:context=".Controller.Score"
     android:orientation="vertical"
     android:layout_margin="35dp">
 
@@ -28,7 +28,8 @@
         android:text="75%"
         android:gravity="center"
         android:textSize="45dp"
-        android:textColor="#BB45"/>
+        android:textColor="#BB45"
+        android:layout_marginBottom="40dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
