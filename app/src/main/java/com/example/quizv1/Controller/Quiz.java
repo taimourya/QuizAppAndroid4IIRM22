@@ -2,6 +2,7 @@ package com.example.quizv1.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.example.quizv1.Dao.IRepository;
 import com.example.quizv1.Dao.QuestionRepository;
 import com.example.quizv1.Entity.Question;
+import com.example.quizv1.Entity.ScoreE;
 import com.example.quizv1.R;
 
 public class Quiz extends AppCompatActivity {
@@ -22,7 +24,7 @@ public class Quiz extends AppCompatActivity {
     private RadioGroup rgReps;
     private Button btnNext;
 
-    private QuestionRepository questionRepository;
+    private QuestionRepository questionRepository = new QuestionRepository();
 
     private int currentQuestionIndex = 0;
     private Question questionCourante;
@@ -38,7 +40,11 @@ public class Quiz extends AppCompatActivity {
         rgReps = findViewById(R.id.rgReps);
         btnNext = findViewById(R.id.btnNext);
 
-        createCurrentQuestion();
+        try {
+            createCurrentQuestion();
+        } catch (Exception e) {
+            startActivity(new Intent(Quiz.this, Login.class));
+        }
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,18 +57,25 @@ public class Quiz extends AppCompatActivity {
 
                 //next question
                 currentQuestionIndex++;
-                createCurrentQuestion();
+                try {
+                    createCurrentQuestion();
+                } catch (Exception e) {
+                    ScoreE.score = nbRepCorrect * 100 / questionRepository.size();
+                    startActivity(new Intent(Quiz.this, Score.class));
+                }
             }
         });
     }
 
-    private void createCurrentQuestion(){
+    private void createCurrentQuestion() throws Exception{
         questionCourante = questionRepository.findOneById(currentQuestionIndex);
+        tvQst.setText(questionCourante.getQuestion());
 
         rgReps.removeAllViews();
         int i = 0;
         for(String s : questionCourante.getReponses()){
             RadioButton rb = new RadioButton(this);
+            rb.setText(s);
             rb.setId(i++);
             rgReps.addView(rb);
         }

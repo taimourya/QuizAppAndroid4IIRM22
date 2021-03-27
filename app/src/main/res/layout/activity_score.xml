@@ -25,6 +25,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/tvScore"
         android:text="75%"
         android:gravity="center"
         android:textSize="45dp"

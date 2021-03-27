@@ -88,4 +88,8 @@ public class QuestionRepository implements IRepository<Question> {
 
     }
 
+    public int size()
+    {
+        return questions.size();
+    }
 }
