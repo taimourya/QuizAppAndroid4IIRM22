@@ -12,20 +12,22 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/ivQuestion"
         android:src="@drawable/logo"
         android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tbQst"
+        android:id="@+id/tvQst"
         android:text="Q1 : Question?"
         android:gravity="center"
         android:textSize="22dp"/>
 
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/rgReps">
 
         <RadioButton
             android:id="@+id/rbRep1"

@@ -80,7 +80,7 @@ public class QuestionRepository implements IRepository<Question> {
 
     @Override
     public Question findOneById(int id) {
-        return null;
+        return questions.get(id);
     }
 
     @Override
